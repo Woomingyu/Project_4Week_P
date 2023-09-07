@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rigidbody;
 
     [SerializeField] private float playerSpeed;
-    [SerializeField] private float jumpDistance;
+    [SerializeField] private float jumpPower;
     private void Awake()
     {
         //플레이어에는 PlayerInputController가 있고 TopDownCharacterController를 부모로 가짐
@@ -52,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         Debug.Log("W 입력");
-        //rigidbody.velocity = new Vector2(rigidbody.velocity.y, jumpDistance);
+        //rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        rigidbody.AddForce(Vector3.up * jumpPower, ForceMode2D.Impulse);
+        //rigidbody.velocity = new Vector2(rigidbody.velocity.y, jumpPower);
     }
 }
